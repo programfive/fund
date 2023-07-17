@@ -29,8 +29,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->prefix('children')->group(function () {
     Route::get('/index',App\Http\Livewire\Children\IndexChild::class)->name('children.index');
-    Route::get('/update',App\Http\Livewire\Children\UpdateChild::class)->name('children.update');
+    Route::get('/{child}/update',App\Http\Livewire\Children\UpdateChild::class)->name('children.update');
     Route::get('/create',App\Http\Livewire\Children\CreateChild::class)->name('children.create');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php'; 

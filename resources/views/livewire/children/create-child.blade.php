@@ -26,7 +26,7 @@
                     <div class="w-full flex relative flex-col {{ $errors->get('photo') ? 'border-negative-300 text-negative-600 hover:ring-negative-500' : 'border-gray-400 text-gray-600 hover:ring-indigo-600 hover:text-indigo-500 hover:ring' }} items-center p-2 sm:p-4 rounded-lg border-dashed tracking-wide uppercase border cursor-pointer delay-75 mt-2">
                       <div class="flex justify-end items-center w-full {{ $photo ? 'block' : 'hidden' }}">
                         <x-button.circle class="border-none outline-none" wire:click="resetImage">
-                          <x-icon name="x" class="w-5 h-5 text-gray-600 hover:text-indigo-500" />
+                          <x-icon name="x" class="w-5 h-5 text-slate-400 hover:text-indigo-500" />
                         </x-button.circle>
                       </div>
                       <label class="relative w-full h-full flex justify-center items-center">

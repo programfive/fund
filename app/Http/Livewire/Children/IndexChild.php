@@ -4,13 +4,26 @@ namespace App\Http\Livewire\Children;
 
 use App\Models\Child;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class IndexChild extends Component
 {
 
+    
+    use WithPagination;
+    public $search = '';
+    protected $queryString = [
+        'search' => ['except' => ''],
+    ];
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+ 
     public function render()
     {
-        $children=Child::all();
+        $children=Child::where('firstName', 'like', '%'.$this->search.'%')
+        ->orWhere('lastName', 'like', '%'.$this->search.'%')
+        ->paginate(6);
         return view('livewire.children.index-child',compact('children'));
     }
 }

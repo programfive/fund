@@ -27,7 +27,7 @@
 
     <div class="relative rounded-md @unless($shadowless) shadow-sm @endunless">
         @if ($prefix || $icon)
-            <div class="absolute  left-0 pl-2.5 flex text-secondary-400 items-center pointer-events-none
+            <div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($icon)
                     <x-dynamic-component
@@ -53,7 +53,7 @@
             ]) }} />
 
         @if ($suffix || $rightIcon || ($hasError && !$append))
-            <div class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none
+            <div class="absolute z-0 inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($rightIcon)
                     <x-dynamic-component
