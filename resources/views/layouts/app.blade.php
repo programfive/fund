@@ -15,10 +15,11 @@
         <wireui:scripts />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
+        
     </head>
     <body >
-      <x-notifications />
-      <x-dialog />
+
+ 
 <!-- component -->
 <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
     <div class="flex overflow-y-auto h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
@@ -29,7 +30,7 @@
       </div>
   
       <!-- Sidebar -->
-      <div class="flex  sm:sticky inset-y-0 z-[5] flex-shrink-0 transition-all">
+      <div class="flex  sm:sticky inset-y-0 z-[15] flex-shrink-0 transition-all">
         <div x-show="isSidebarOpen" @click="isSidebarOpen = false"
           class="fixed inset-0 z-10 bg-black bg-opacity-50 lg:hidden"></div>
         <div x-show="isSidebarOpen" class="fixed inset-y-0 z-10 w-16 bg-white"></div>

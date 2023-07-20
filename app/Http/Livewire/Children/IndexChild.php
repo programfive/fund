@@ -5,18 +5,28 @@ namespace App\Http\Livewire\Children;
 use App\Models\Child;
 use Livewire\Component;
 use Livewire\WithPagination;
+
 class IndexChild extends Component
 {
 
-    
     use WithPagination;
     public $search = '';
+    public $open;
+    public $child;
     protected $queryString = [
         'search' => ['except' => ''],
     ];
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+    public function Show(Child $child){
+        $this->open=true;
+        $this->child=$child;
+  
+      
+        
+        
     }
  
     public function render()

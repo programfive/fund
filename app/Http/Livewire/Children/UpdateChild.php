@@ -25,7 +25,6 @@ class UpdateChild extends Component
     ];
     public function mount(Child $child)
     {
-        
         $this->child = $child;
         $this->firstName = $this->child->firstName;
         $this->lastName = $this->child->lastName;

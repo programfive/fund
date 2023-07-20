@@ -10,12 +10,11 @@
             <x-dynamic-component
                 :component="WireUi::component('icon')"
                 class="w-4 h-4 text-secondary-500 hover:text-secondary-700
-                     dark:hover:text-secondary-600 transition duration-150 ease-in-out"
+         dark:hover:text-secondary-600 transition duration-150 ease-in-out"
                 name="dots-vertical"
             />
         @endif
     </div>
-
     <div x-show="status"
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 scale-95"
@@ -26,7 +25,7 @@
         {{ $attributes->except('wire:key')->class([
             $getAlign(),
             $width,
-            'z-30 absolute mt-2 whitespace-nowrap'
+            'z-10 absolute mt-2 whitespace-nowrap'
         ]) }}
         style="display: none;"
         @unless($persistent) x-on:click="close" @endunless>
