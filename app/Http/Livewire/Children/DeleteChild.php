@@ -39,7 +39,13 @@ class DeleteChild extends Component
     {
         if ($this->child) {
             $this->child->delete();
-            $this->flash('success', 'Registro eliminado con éxito.',[],'children/index');
+            $this->flash('success', '', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+                'text' => '¡Registro eliminado con éxito!',
+            ], 'dashboard');
         } else {
             $this->alert('error', 'No se pudo eliminar el registro.');
         }

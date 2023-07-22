@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Children;
 use App\Models\Child;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\Facades\Image;
+use App\Helpers\Images;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 class UpdateChild extends Component
 {
@@ -35,12 +35,10 @@ class UpdateChild extends Component
     {
         $this->validate();
         if ($this->photo) {
-            $newImageName = time() . '_' . $this->photo->getClientOriginalName();
-            $img = Image::make($this->photo->getRealPath());
-            $img->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save(public_path('storage/images/children/' . $newImageName));
+            $newImageName =Images::generateImageName($this->photo);
+            $path="app/public/images/children/";
+            $resize=300;
+            Images::resizeAndSaveImage($newImageName,$this->photo,$path,$resize);
             $this->child->photo = 'storage/images/children/' . $newImageName;
         }
         $this->child->firstName = $this->firstName;
@@ -49,12 +47,12 @@ class UpdateChild extends Component
         $this->child->dateOfAdmission = $this->dateOfAdmission;
         $this->child->save();
         $this->reset(['photo', 'firstName', 'birthdate', 'lastName', 'dateOfAdmission']);
-        $this->flash('success', '¡Registro actualizado!', [
+        $this->flash('success', '', [
             'position' => 'top-end',
             'timer' => 3000,
             'toast' => true,
             'timerProgressBar' => true,
-            'text' => 'El registro ha sido actualizado exitosamente ',
+            'text' => '¡El registro ha sido actualizado exitosamente !',
         ], '/children/index');
     }
     public function resetImage()

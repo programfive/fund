@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+  <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        <wireui:scripts />
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @livewireStyles
-        
-    </head>
-    <body >
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
- 
-<!-- component -->
-<div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
+  <!-- Scripts -->
+  <wireui:scripts />
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @livewireStyles
+
+</head>
+
+<body>
+
+
+  <!-- component -->
+  <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
     <div class="flex overflow-y-auto h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
       <!-- Loading screen -->
       <div x-ref="loading"
         class="fixed inset-0 z-[100] flex items-center justify-center text-2xl font-semibold text-white bg-indigo-800">
         Loading.....
       </div>
-  
+
       <!-- Sidebar -->
       <div class="flex  sm:sticky inset-y-0 z-[15] flex-shrink-0 transition-all">
         <div x-show="isSidebarOpen" @click="isSidebarOpen = false"
           class="fixed inset-0 z-10 bg-black bg-opacity-50 lg:hidden"></div>
         <div x-show="isSidebarOpen" class="fixed inset-y-0 z-10 w-16 bg-white"></div>
-  
+
         <!-- Mobile bottom bar -->
         <nav aria-label="Options"
           class="fixed inset-x-0 bottom-0 flex flex-row-reverse items-center justify-between px-4 py-2 bg-white border-t border-indigo-100 sm:hidden shadow-t rounded-t-3xl">
@@ -55,29 +57,11 @@
               src="https://raw.githubusercontent.com/kamona-ui/dashboard-alpine/main/public/assets/images/logo.png"
               alt="K-UI" />
           </a>
-  
+
           <!-- User avatar button -->
-          <div class="relative flex items-center flex-shrink-0 p-2" x-data="{ isOpen: false }">
-            <button @click="isOpen = !isOpen; $nextTick(() => {isOpen ? $refs.userMenu.focus() : null})"
-              class="transition-opacity rounded-lg opacity-80 hover:opacity-100 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-white focus:ring-offset-2">
-              <img class="w-8 h-8 rounded-lg shadow-md"
-                src="https://avatars.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
-                alt="Ahmed Kamel" />
-              <span class="sr-only">User menu</span>
-            </button>
-            <div x-show="isOpen" @click.away="isOpen = false" @keydown.escape="isOpen = false" x-ref="userMenu"
-              tabindex="-1"
-              class="absolute w-48 py-1 mt-2 origin-bottom-left bg-white rounded-md shadow-lg left-10 bottom-14 focus:outline-none"
-              role="menu" aria-orientation="vertical" aria-label="user menu">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-  
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-  
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
-            </div>
-          </div>
+          <x-navigation align='top-left' />
         </nav>
-  
+
         <!-- Left mini bar -->
         <nav aria-label="Options"
           class="z-20    bg-white flex-col items-center flex-shrink-0 hidden w-16 py-4  border-r-2 border-indigo-100 shadow-md sm:flex  rounded-br-3xl">
@@ -126,32 +110,28 @@
               </svg>
             </button>
           </div>
-  
+
           <!-- User avatar -->
           <div class="relative sm:hidden  flex items-center flex-shrink-0 p-4" x-data="{ isOpen: false }">
-            <button @click="isOpen = !isOpen; $nextTick(() => {isOpen ? $refs.userMenu.focus() : null})"
-              class="transition-opacity rounded-lg opacity-80 hover:opacity-100 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-white focus:ring-offset-2">
-              <img class="w-10 h-10 rounded-lg shadow-md"
-                src="https://avatars.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
-                alt="Ahmed Kamel" />
-              <span class="sr-only">User menu</span>
-            </button>
+
             <div x-show="isOpen" @click.away="isOpen = false" @keydown.escape="isOpen = false" x-ref="userMenu"
               tabindex="-1"
               class="absolute w-48 py-1 mt-2 origin-bottom-left bg-white rounded-md shadow-lg left-10 bottom-14 focus:outline-none"
               role="menu" aria-orientation="vertical" aria-label="user menu">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-  
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
+                Profile</a>
+
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-  
+
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
             </div>
           </div>
         </nav>
-  
-        <div x-transition:enter="transform transition-transform duration-300" x-transition:enter-start="-translate-x-full"
-          x-transition:enter-end="translate-x-0" x-transition:leave="transform transition-transform duration-300"
-          x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full" x-show="isSidebarOpen"
+
+        <div x-transition:enter="transform transition-transform duration-300"
+          x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+          x-transition:leave="transform transition-transform duration-300" x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="-translate-x-full" x-show="isSidebarOpen"
           class="fixed inset-y-0 left-0 z-10 flex-shrink-0 w-64 bg-white border-r-2 border-indigo-100 shadow-lg sm:left-16 rounded-tr-3xl sm:rounded-tr-none rounded-br-3xl sm:w-72 lg:static lg:w-64">
           <nav x-show="currentSidebarTab == 'linksTab'" aria-label="Main" class="flex flex-col h-full">
             <!-- Logo -->
@@ -175,7 +155,7 @@
                   alt="K-UI" />
               </a>
             </div>
-  
+
             <!-- Links -->
             <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
               <a href="#" class="flex items-center w-full space-x-2 text-white bg-indigo-600 rounded-lg">
@@ -188,14 +168,14 @@
                 </span>
                 <span>Home</span>
               </a>
-        
+
             </div>
           </nav>
-  
+
           <section x-show="currentSidebarTab == 'messagesTab'" class="px-4 py-6">
             <h2 class="text-xl">Messages</h2>
           </section>
-  
+
           <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
             <h2 class="text-xl">Notifications</h2>
           </section>
@@ -203,21 +183,31 @@
       </div>
       <div class="flex flex-col flex-1">
         <header class="relative z-0 flex items-center justify-end flex-shrink-0 p-4 sm:p-0">
-          <x-navigation/>
+
+          <div
+            class="w-full  
+              px-4 py-2 bg-white border-b border-indigo-100  shadow-b rounded-b-3xl b hidden  sm:flex justify-end items-center ">
+            <!-- User avatar -->
+            <div class="relative flex items-center flex-shrink-0 p-2" x-data="{ isOpen: false }">
+              <x-navigation />
+            </div>
+          </div>
+
+
 
 
           <!-- Mobile sub header button -->
           <button @click="isSubHeaderOpen = !isSubHeaderOpen"
             class="p-2 text-gray-400 bg-white rounded-lg shadow-md sm:hidden hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4">
             <span class="sr-only">More</span>
-  
+
             <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
             </svg>
           </button>
-  
+
           <!-- Mobile sub header -->
           <div x-transition:enter="transform transition-transform" x-transition:enter-start="translate-y-full opacity-0"
             x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transform transition-transform"
@@ -256,28 +246,29 @@
                   d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
             </button>
-    
+
           </div>
         </header>
-  
+
         <div class="flex flex-1">
           <!-- Main -->
           <main class="flex flex-1 ">
-                 {{$slot}}
+            {{$slot}}
           </main>
         </div>
       </div>
     </div>
     <!-- Panels -->
-  
+
     <!-- Settings Panel -->
     <!-- Backdrop -->
-    <div x-show="isSettingsPanelOpen" class="fixed z-[40] inset-0 bg-black bg-opacity-50" @click="isSettingsPanelOpen = false"
-      aria-hidden="true"></div>
+    <div x-show="isSettingsPanelOpen" class="fixed z-[40] inset-0 bg-black bg-opacity-50"
+      @click="isSettingsPanelOpen = false" aria-hidden="true"></div>
     <!-- Panel -->
-    <section x-transition:enter="transform transition-transform duration-300" x-transition:enter-start="translate-x-full"
-      x-transition:enter-end="translate-x-0" x-transition:leave="transform transition-transform duration-300"
-      x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" x-show="isSettingsPanelOpen"
+    <section x-transition:enter="transform transition-transform duration-300"
+      x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+      x-transition:leave="transform transition-transform duration-300" x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="translate-x-full" x-show="isSettingsPanelOpen"
       class="fixed z-[50] inset-y-0 right-0 w-64 bg-white border-l border-indigo-100 rounded-l-3xl">
       <div class="px-4 py-8">
         <h2 class="text-lg font-semibold">Settings</h2>
@@ -285,7 +276,7 @@
     </section>
   </div>
   </div>
-  
+
   <script>
     const setup = () => {
           return {
@@ -301,10 +292,11 @@
       }
     }
   </script>
-    
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <x-livewire-alert::scripts />
-        @livewireScripts
-    </body>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <x-livewire-alert::scripts />
+  @livewireScripts
+</body>
+
 </html>

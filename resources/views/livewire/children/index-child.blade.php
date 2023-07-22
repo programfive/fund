@@ -39,13 +39,12 @@
             </x-card>
         </x-modal>
     @endif
-
     <section class="flex flex-col gap-10">
         <div>
             <x-header-text title="Lista de registros" />
             <div class="flex sm:justify-between items-center mt-4 flex-col-reverse sm:flex-row gap-4">
                 <div class="max-w-xl w-full">
-                    <x-input wire:model="search" icon="search" placeholder="Buscar.." />
+                    <x-input wire:model.debounce.500ms="search" icon="search" placeholder="Buscar.." />
                 </div>
                 <div class="self-end">
                     <x-button href="{{ route('children.create') }}" icon='plus' indigo label="Nuevo" teal />
@@ -53,14 +52,14 @@
             </div>
         </div>
 
-        <x-card class="mb-20 sm:mb-5">
+        <x-card  class="mb-20 sm:mb-5 ">
             @if ($children->isEmpty())
                 <p class="text-gray-600 text-lg text-center">¡No hay ningún registro que mostrar!</p>
             @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+                <div   class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8 md:px-5">
                     @foreach ($children as $child)
-                        <div class="w-full m-auto max-w-sm bg-white border p-4 rounded-md border-indigo-100 shadow">
-                            <div class="flex justify-end items-center">
+                    <div  class="w-full m-auto max-w-sm bg-white border p-4 rounded-md border-indigo-100 shadow transform transition duration-500 hover:scale-110">
+                            <div   class="flex justify-end items-center">
                                 <x-dropdown>
                                     <x-dropdown.item icon="cog" label="Editar"
                                                      href="{{ route('children.update', ['child' => $child]) }}" />

@@ -5,9 +5,8 @@ namespace App\Http\Livewire\Children;
 use App\Models\Child;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\Facades\Image;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-
+use App\Helpers\Images;
 class CreateChild extends Component
 {
     use WithFileUploads;
@@ -28,12 +27,10 @@ class CreateChild extends Component
     {
 
         $this->validate();
-        $newImageName = time() . '_' . $this->photo->getClientOriginalName();
-        $img = Image::make($this->photo->getRealPath());
-        $img->resize(400, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $img->save(storage_path('app/public/images/children/' . $newImageName));
+        $newImageName =Images::generateImageName($this->photo);
+        $path="app/public/images/children/";
+        $resize=300;
+        Images::resizeAndSaveImage($newImageName,$this->photo,$path,$resize);
         $this->photo = 'storage/images/children/' . $newImageName;
         Child::create([
             'firstName' => $this->firstName,
@@ -43,12 +40,12 @@ class CreateChild extends Component
             'dateOfAdmission' => $this->dateOfAdmission,
         ]);
         $this->reset(['photo', 'firstName', 'birthdate', 'lastName', 'dateOfAdmission']);
-        $this->flash('success', '¡Registro completado!', [
+        $this->flash('success', '', [
             'position' => 'top-end',
             'timer' => 3000,
             'toast' => true,
             'timerProgressBar' => true,
-            'text' => 'El registro ha sido exitosamente completado',
+            'text' => '¡El registro ha sido exitosamente completado!',
         ], '/children/index');
     }
     public function resetImage()

@@ -11,7 +11,7 @@ class IndexChild extends Component
 
     use WithPagination;
     public $search = '';
-    public $open;
+    public $open=false;
     public $child;
     protected $queryString = [
         'search' => ['except' => ''],
@@ -23,10 +23,6 @@ class IndexChild extends Component
     public function Show(Child $child){
         $this->open=true;
         $this->child=$child;
-  
-      
-        
-        
     }
  
     public function render()
