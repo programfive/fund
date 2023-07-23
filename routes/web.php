@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +24,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->prefix('Profile')->group(function () {
     Route::get('/update',App\Http\Livewire\Profile\UpdateProfile::class)->name('profile.update');
+});
+
+Route::middleware('auth')->prefix('Jobs')->group(function () {
+    Route::get('/index',App\Http\Livewire\Jobs\IndexJob::class)->name('jobs.index');
 });
 Route::middleware('auth')->prefix('children')->group(function () {
     Route::get('/index',App\Http\Livewire\Children\IndexChild::class)->name('children.index');

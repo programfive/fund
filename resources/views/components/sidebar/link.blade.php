@@ -5,9 +5,9 @@
 ])
 
 @php
-    $isActiveClasses =  $isActive ? 'text-white bg-indigo-500 shadow-lg hover:bg-indigo-600' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-dark-eval-2';
+    $isActiveClasses =  $isActive ? 'text-white bg-indigo-500 shadow-lg hover:bg-indigo-600' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 ';
 
-    $classes = 'flex-shrink-0  flex items-center gap-2 p-2 transition-colors rounded-md overflow-hidden ' . $isActiveClasses;
+    $classes = 'flex-shrink-0 outline-none  flex items-center gap-2 p-2 transition-colors rounded-md overflow-hidden ' . $isActiveClasses;
 
     if($collapsible) $classes .= ' w-full';
 @endphp
@@ -21,13 +21,13 @@
 
         <span
             class="text-base font-medium whitespace-nowrap"
-            x-show="isSidebarOpen || isSidebarHovered"
+            x-show="isSidebarOpen "
         >
             {{ $title }}
         </span>
 
         <span
-            x-show="isSidebarOpen || isSidebarHovered"
+            x-show="isSidebarOpen "
             aria-hidden="true"
             class="relative block ml-auto w-6 h-6"
         >
@@ -51,7 +51,7 @@
 
         <span
             class="text-base font-medium"
-            x-show="isSidebarOpen || isSidebarHovered"
+            x-show="isSidebarOpen "
         >
             {{ $title }}
         </span>

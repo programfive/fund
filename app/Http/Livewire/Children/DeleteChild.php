@@ -16,7 +16,7 @@ class DeleteChild extends Component
     }
     public function confirmDelete()
     {
-        $this->alert('warning', '¿Estás seguro de que deseas eliminar este registro?', [
+        $this->alert('warning', '', [
             'showConfirmButton' => true,
             'confirmButtonText' => 'Eliminar',
             'showCancelButton' => true,
@@ -25,6 +25,7 @@ class DeleteChild extends Component
             'cancelButtonColor' => '#3b82f6',
             'onConfirmed' => 'confirmed',
             'listener' => 'confirmed',
+            'text'=>'¿Estás seguro de que deseas eliminar este registro?',
             'timerProgressBar' => true,
 
         ]);

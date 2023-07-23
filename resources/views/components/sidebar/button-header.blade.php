@@ -12,19 +12,18 @@
     x-show="isSubHeaderOpen" @click.away="isSubHeaderOpen = false"
     class="absolute flex z-[44] items-center justify-between p-2 bg-white rounded-md shadow-lg sm:hidden top-16 left-5 right-5">
     <!-- Seetings button -->
-    <button @click="isSettingsPanelOpen = true; isSubHeaderOpen = false"
-      class="p-2 text-gray-400 bg-white rounded-lg z-20 shadow-md hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4">
+    <x-sidebar.button-primary @click="isSettingsPanelOpen = true; isSubHeaderOpen = false">
       <x-icon name="cog" class="w-6 h-6" />
-    </button>
+    </x-sidebar.button-primary>
+
     <!-- Messages button -->
-    <button @click="isSidebarOpen = true; currentSidebarTab = 'messagesTab'; isSubHeaderOpen = false"
-      class="p-2 text-gray-400 bg-white rounded-lg shadow-md hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4">
-     <x-icon name="chat-alt"  class="w-6 h-6"/>
-    </button>
+    <x-sidebar.button-primary @click="isSidebarOpen = true; currentSidebarTab = 'messagesTab'; isSubHeaderOpen = false">
+      <x-icon name="chat-alt" class="w-6 h-6" />
+    </x-sidebar.button-primary>
+
     <!-- Notifications button -->
-    <button @click="isSidebarOpen = true; currentSidebarTab = 'notificationsTab'; isSubHeaderOpen = false"
-      class="p-2 text-gray-400 bg-white rounded-lg shadow-md hover:text-gray-600 focus:outline-none focus:ring focus:ring-white focus:ring-offset-gray-100 focus:ring-offset-4">
-      <x-icon name="bell"  class="w-6 h-6"/>
-    </button>
+    <x-sidebar.button-primary @click="isSidebarOpen = true; currentSidebarTab = 'notificationsTab'; isSubHeaderOpen = false">
+      <x-icon name="bell" class="w-6 h-6" />
+    </x-sidebar.button-primary>
   </div>
 </header>

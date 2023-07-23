@@ -8,7 +8,7 @@
   <div class=" mt-2">
     <main class="xl:mt-8">
       <x-card class=" px-4 py-10 mx-auto">
-        <div class=" max-w-6xl mx-auto mt-6 px-4 py-10 md:mt-0">
+        <div class=" max-w-6xl mx-auto mt-6 p-2 sm:px-4 sm:py-10 md:mt-0">
           <section class="md:grid md:grid-cols-3 md:gap-6">
             <article class="md:col-span-1">
               <h3 class="text-lg font-medium leading-6 text-gray-900">Creación de registro</h3>
@@ -16,7 +16,7 @@
                 proporcionada.</p>
             </article>
             <article class="mt-5 md:mt-0 md:col-span-2">
-              <div class="p-4 bg-white border rounded-md border-indigo-100">
+              <div class="p-2 sm:p-4 bg-white border rounded-md border-indigo-100">
                 <div class="grid gap-4 mb-4">
                   <div class="space-y-2 flex flex-col gap-2">
                     <x-errors only="lastName|firstName|birthdate|dateOfAdmission|photo" />
