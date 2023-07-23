@@ -2,7 +2,7 @@
     <x-header-text title="Lista de registros" />
     <main>
         <x-card class="mb-20 sm:mb-5">
-            <div class="max-w-6xl px-4 py-10 mx-auto flex flex-col gap-10">
+            <div class="max-w-6xl sm:px-4 sm:py-10 mx-auto flex flex-col gap-10">
                 <div>
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">

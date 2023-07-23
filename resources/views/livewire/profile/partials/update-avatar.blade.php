@@ -14,9 +14,9 @@
                         </span>
                         <div class="flex items-center space-x-2">
                             <label for="file-upload" type="button"
-                                class="px-4 py-2 transition-colors duration-300 transform rounded-lg  bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500">Subir</label>
+                                class="px-4 py-2 transition-colors duration-300 transform rounded-lg  bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500 cursor-pointer">Subir</label>
                         </div>
-                        <form action="post" enctype="multipart/form-data">
+                        <form  enctype="multipart/form-data">
                             <input accept="image/*" id="file-upload" wire:model='avatar' name="avatar" type="file"
                                 class="sr-only">
                         </form>
@@ -39,7 +39,7 @@
                             <div class="w-full h-full flex gap-2 flex-col justify-center items-center">
                                 <x-icon name="cloud-upload"
                                     class="w-10 h-10 {{ $errors->get('avatar') ? 'text-negative-500' : 'text-blue-600' }}" />
-                                <p class="mt-2 text-base leading-normal">Imagen del Avatar</p>
+                                <p class="mt-2 sm:text-base text-sm  leading-normal">Imagen del Avatar</p>
                             </div>
                             @endif
                         </div>

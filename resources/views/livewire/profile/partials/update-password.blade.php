@@ -1,6 +1,6 @@
 <div class="mt-5 md:mt-0 md:col-span-2">
     <div
-        class="px-4 py-5 bg-white rounded-b-md border border-indigo-100 sm:p-6 rounded-tl-md rounded-tr-md">
+        class="sm:px-4 sm:py-5  p-2  bg-white rounded-b-md border border-indigo-100 sm:p-6 rounded-tl-md rounded-tr-md">
         <x-errors only="currentPassword|newPassword" />
         <form wire:submit.prevent="updatePassword" class="max-w-2xl ">
             <div class="flex flex-col gap-2">
