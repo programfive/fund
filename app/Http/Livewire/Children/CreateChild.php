@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Helpers\Images;
+use Illuminate\Support\Facades\Auth;
 class CreateChild extends Component
 {
     use WithFileUploads;
@@ -38,6 +39,7 @@ class CreateChild extends Component
             'photo' => $this->photo,
             'birthdate' => $this->birthdate,
             'dateOfAdmission' => $this->dateOfAdmission,
+            'user_id'=>Auth::user()->id
         ]);
         $this->reset(['photo', 'firstName', 'birthdate', 'lastName', 'dateOfAdmission']);
         $this->flash('success', '', [

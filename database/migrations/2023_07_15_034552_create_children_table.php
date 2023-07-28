@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('children', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('dateOfAdmission');
-            $table->string('photo');
-            $table->string('birthdate');
+            $table->string('firstName',255);
+            $table->string('lastName',255);
+            $table->string('dateOfAdmission',45);
+            $table->string('photo',90);
+            $table->string('birthdate',45);
+            $table->unsignedBigInteger('user_id')->nullable(); 
+            $table->foreign('user_id')->references('id')->on('users')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }

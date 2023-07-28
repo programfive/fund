@@ -31,6 +31,10 @@
                 <p class="text-gray-700 font-bold leading-loose">Última modificación en:
                     <span class="text-secondary-700 font-normal">{{ Date::dateFormat($child->updated_at) }}</span>
                 </p>
+                <p class="text-gray-700 font-bold leading-loose">Creado por:
+                    <span class="text-secondary-700 font-normal">{{ $child->user->name }}</span>
+                </p>
+               
                 <x-slot name="footer">
                     <div class="flex justify-end gap-x-4">
                         <x-button primary label="Cancelar" x-on:click="close" />
@@ -73,6 +77,8 @@
                                      src="{{ asset($child->photo) }}" alt="{{ $child->name }}" />
                                 <p class="text-xl font-medium text-gray-900 capitalize">{{ $child->firstName }}</p>
                                 <p class="text-sm text-gray-500 capitalize">{{ $child->lastName }}</p>
+
+                                
                             </div>
                         </div>
                     @endforeach

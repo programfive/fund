@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('comment_jobs', function (Blueprint $table){
             $table->id();
-            $table->string('name',255);
-            $table->string('hour',45);
-            $table->text('description');
-            $table->boolean('status')->nullable();
+            $table->string('category',45);
+            $table->text('comment');
+            $table->unsignedBigInteger('user_id')->nullable(); 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('comment_jobs');
     }
 };

@@ -1,5 +1,5 @@
 <div>
-    <x-button label="Crear" indigo wire:click="$set('open',true)" />
+    <x-button icon='plus' indigo label="Nuevo" teal wire:click="$set('open',true)" />
     <x-modal.card title="Edit Customer"  wire:model.defer="open">
         <div class="flex flex-col gap-4">
             <x-input wire:model='name' label="Nombre" placeholder="Nombre" rightIcon="pencil"/>
